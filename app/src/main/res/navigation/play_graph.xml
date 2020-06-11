@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/choosequiz">
+
+    <fragment
+        android:id="@+id/choosequiz"
+        android:name="com.example.quizzapp.ChooseQuiz"
+        android:label="@string/choosequiz"
+        tools:layout="@layout/fragment_choose_language">
+
+        <action
+            android:id="@+id/action_choosequiz_to_createFragment"
+            app:destination="@id/answerQuiz" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/answerQuiz"
+        android:name="com.example.quizzapp.AnswerQuiz"
+        android:label="@string/answerQuiz"
+        tools:layout="@layout/fragment_answer_quiz">
+        <argument
+            android:name="quizzId"
+            app:argType="string" />
+    </fragment>
+    <argument
+        android:name="quizzId"
+        android:defaultValue="No Message"    app:argType="string" />
+
+</navigation>
