@@ -54,7 +54,9 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             app:backgroundTint="@color/colorAccent"
+            android:background="@color/colorAccent"
             app:strokeColor= "@color/colorPrimary"
+            android:enabled="true"
             style="@style/Widget.MaterialComponents.Button"
             />
 

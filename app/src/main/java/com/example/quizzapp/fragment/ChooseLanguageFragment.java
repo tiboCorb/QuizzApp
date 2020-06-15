@@ -1,4 +1,4 @@
-package com.example.quizzapp;
+package com.example.quizzapp.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
+import com.example.quizzapp.R;
 import com.example.quizzapp.helper.CustomSpinnerAdapter;
 import com.example.quizzapp.helper.InputValidation;
 import com.google.android.material.textfield.TextInputEditText;
@@ -85,7 +85,7 @@ public class ChooseLanguageFragment  extends Fragment implements AdapterView.OnI
     public void onNothingSelected(AdapterView<?> adapterView)
     {}
 
-    interface SendLanguage {
+   public  interface SendLanguage {
         void sendData(String language, String quizzName);
     }
 

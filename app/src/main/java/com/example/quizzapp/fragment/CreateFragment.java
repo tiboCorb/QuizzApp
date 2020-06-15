@@ -1,4 +1,4 @@
-package com.example.quizzapp;
+package com.example.quizzapp.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-
+import com.example.quizzapp.R;
 import com.example.quizzapp.model.Option;
 import com.example.quizzapp.model.Question;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -216,7 +216,7 @@ public class CreateFragment extends Fragment {
     }
 
 
-    interface SendQuestions {
+    public interface SendQuestions {
         void sendArray(RealmList<Question> questions);
     }
 

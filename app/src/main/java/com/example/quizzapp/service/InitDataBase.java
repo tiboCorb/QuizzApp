@@ -1,4 +1,4 @@
-package com.example.quizzapp;
+package com.example.quizzapp.service;
 
 import android.app.Service;
 import android.content.Intent;
@@ -19,8 +19,8 @@ import io.realm.RealmList;
 public class InitDataBase extends Service {
 
     private String [][]  questionsJs = {
-            {"Dans quel baslise et placé le javascript ?","```<javascript>```","`<scripting>`","`<js>`","`<script>`","D"},
-            {"Quel est la syntax correct pour modifier l'élément HTML suivant : \n `<p id=\"demo\"> demo</p>`", "`document.getElementById(\"demo\").innerHTML = \"Hello World!\";`", "` document.getElement(\"p\").innerHTML = \"Hello World!\";`","` #demo.innerHTML = \"Hello World!\";`","` document.getElementByName(\"p\").innerHTML = \"Hello World!\";`", "A"},
+            {"Dans quel balise et placé le javascript ?","```<javascript>```","`<scripting>`","`<js>`","`<script>`","D"},
+            {"Quel est la syntax correct spour modifier l'élément HTML suivant : \n `<p id=\"demo\"> demo</p>`", "`document.getElementById(\"demo\").innerHTML = \"Hello World!\";`", "` document.getElement(\"p\").innerHTML = \"Hello World!\";`","` #demo.innerHTML = \"Hello World!\";`","` document.getElementByName(\"p\").innerHTML = \"Hello World!\";`", "A"},
             {"Dans quel section placer le javascript ?","La section `<body>`","La section `<head>` ou `<body>` aux choix","Aucune des deux","`<script>`","B"},
             {"Quel est la syntaxe correct pour utilisé un script extérieur ?"," `<script href=\"xxx.js\">`","` <script src=\"xxx.js\">`"," `<script name=\"xxx.js\">`"," `</script src=\"xxx.js\">`","B"},
             {"Comment écrire \"hello world\" dans une alerte ?","` alertBox(\"Hello World\");`"," `msgBox(\"Hello World\");`","` msg(\"Hello World\");`"," `alert(\"Hello World\");`","D"},

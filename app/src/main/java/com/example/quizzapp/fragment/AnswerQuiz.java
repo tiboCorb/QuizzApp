@@ -1,4 +1,4 @@
-package com.example.quizzapp;
+package com.example.quizzapp.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -19,6 +19,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import com.example.quizzapp.AnswerQuizArgs;
+import com.example.quizzapp.R;
+import com.example.quizzapp.activity.MainActivity;
 import com.example.quizzapp.model.Question;
 import com.example.quizzapp.model.Quizz;
 import com.example.quizzapp.model.QuizzUser;
@@ -105,15 +108,15 @@ public class AnswerQuiz extends Fragment {
             @Override
             public void onClick(final View view) {
                 if (selectedOption.equals("")) {
-                    Toast.makeText(view.getContext(),"Choisisez une réponse pour continuer ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(),R.string.chooseAnsers,Toast.LENGTH_SHORT).show();
                 } else {
                     currentQuestion++;
 
                     if (selectedOption.equals(corretoption)) {
                         fab.setClickable(false);
 
-                        Snackbar.make(scroll, "CORRECT", Snackbar.LENGTH_INDEFINITE)
-                                .setAction("Continue", new View.OnClickListener() {
+                        Snackbar.make(scroll, R.string.correct, Snackbar.LENGTH_INDEFINITE)
+                                .setAction(R.string.next, new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         questionCorrect++;
@@ -122,8 +125,8 @@ public class AnswerQuiz extends Fragment {
                                             startThis();
                                         else {
                                             AlertDialog.Builder score = new AlertDialog.Builder(view.getContext()).setCancelable(false);
-                                            score.setTitle("QUIZ Terminé!!!");
-                                            score.setMessage(" " + questionCorrect + "bonnes réponses sur" + questions.size() );
+                                            score.setTitle(R.string.over);
+                                            score.setMessage( questionCorrect +" " + R.string.correctAnswer+ " " + questions.size() );
                                             score.setIcon(android.R.drawable.ic_dialog_info);
                                             score.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                 @Override
@@ -131,7 +134,7 @@ public class AnswerQuiz extends Fragment {
                                                   saveAndQuite();
                                                 }
                                             });
-                                            score.setNeutralButton("SHARE RESULT", new DialogInterface.OnClickListener() {
+                                            score.setNeutralButton(R.string.share, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     saveAndQuite();
@@ -168,8 +171,8 @@ public class AnswerQuiz extends Fragment {
 
                     } else {
                         fab.setClickable(false);
-                        Snackbar.make(scroll, "WRONG, CORRECT ANSWER :" + corretoption, Snackbar.LENGTH_INDEFINITE)
-                                .setAction("Continue", new View.OnClickListener() {
+                        Snackbar.make(scroll, R.string.wrong+" "+ corretoption, Snackbar.LENGTH_INDEFINITE)
+                                .setAction(R.string.next, new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         clearPreviousselections();
@@ -177,8 +180,8 @@ public class AnswerQuiz extends Fragment {
                                             startThis();
                                         else {
                                             AlertDialog.Builder score = new AlertDialog.Builder(view.getContext()).setCancelable(false);
-                                            score.setTitle("QUIZ terminé!!!");
-                                            score.setMessage(" " + questionCorrect + " bonnes réponses sur  " + questions.size() + " questions");
+                                            score.setTitle(R.string.over);
+                                            score.setMessage( questionCorrect +" " + R.string.correctAnswer+ " "  + questions.size() + " questions");
                                             score.setIcon(android.R.drawable.ic_dialog_info);
                                             score.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                 @Override
@@ -186,7 +189,7 @@ public class AnswerQuiz extends Fragment {
                                                     saveAndQuite();
                                                 }
                                             });
-                                            score.setNeutralButton("partager le résultat", new DialogInterface.OnClickListener() {
+                                            score.setNeutralButton(R.string.share, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     saveAndQuite();
@@ -354,11 +357,14 @@ public class AnswerQuiz extends Fragment {
 
         user.setTotalScore(user.getTotalScore()+questionCorrect);
 
-        Result result = realm.createObject(Result.class, UUID.randomUUID().toString());
+        Result result = new Result();
+        result.setResultId( UUID.randomUUID().toString());
         result.setQuizz(quizz);
         result.setScore(new Long(questionCorrect));
         result.setUser(realm.copyToRealmOrUpdate(user));
+
         realm.commitTransaction();
+
         Intent i = new Intent(getActivity(), MainActivity.class);
         i.putExtra("quizzUsersName", user.getNickname());
         startActivity(i);

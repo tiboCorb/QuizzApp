@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_choose_language"
-        android:name="com.example.quizzapp.ChooseLanguageFragment"
+        android:name="com.example.quizzapp.fragment.ChooseLanguageFragment"
         android:label="@string/fragment_home"
         tools:layout="@layout/fragment_choose_language">
 
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/create_frag"
-        android:name="com.example.quizzapp.CreateFragment"
+        android:name="com.example.quizzapp.fragment.CreateFragment"
         android:label="@string/fragment_play"
         tools:layout="@layout/fragment_create">
     </fragment>

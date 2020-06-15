@@ -1,8 +1,12 @@
-package com.example.quizzapp;
+package com.example.quizzapp.activity;
 
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.quizzapp.fragment.CreateFragment;
+import com.example.quizzapp.R;
+import com.example.quizzapp.fragment.ChooseLanguageFragment;
 import com.example.quizzapp.model.Question;
 import com.example.quizzapp.model.Quizz;
 import com.example.quizzapp.model.QuizzUser;
@@ -17,7 +21,8 @@ import io.realm.RealmList;
 import io.realm.RealmResults;
 
 
-public class CreateActivity extends AppCompatActivity implements ChooseLanguageFragment.SendLanguage , CreateFragment.SendQuestions{
+
+public class CreateActivity extends AppCompatActivity implements ChooseLanguageFragment.SendLanguage , CreateFragment.SendQuestions {
 
     String language;
     String quizName;

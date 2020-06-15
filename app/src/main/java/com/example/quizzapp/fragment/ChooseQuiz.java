@@ -1,6 +1,4 @@
-package com.example.quizzapp;
-
-import androidx.lifecycle.ViewModelProviders;
+package com.example.quizzapp.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,9 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -22,10 +18,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+
+import com.example.quizzapp.R;
 import com.example.quizzapp.model.Quizz;
-import com.example.quizzapp.model.QuizzUser;
 
 import java.util.ArrayList;
 

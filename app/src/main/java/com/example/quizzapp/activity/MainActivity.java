@@ -1,13 +1,11 @@
-package com.example.quizzapp;
+package com.example.quizzapp.activity;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.anychart.AnyChart;
-import com.anychart.AnyChartView;
-import com.anychart.charts.Pie;
 import com.blongho.country_data.World;
+import com.example.quizzapp.R;
 import com.example.quizzapp.model.QuizzUser;
 import com.example.quizzapp.model.Result;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,7 +24,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -89,8 +86,10 @@ public class MainActivity extends AppCompatActivity {
         flag  = findViewById(R.id.imgViewFlag);
         score = findViewById(R.id.score);
         profileImageView = findViewById(R.id.profileImageView);
-        AnyChartView anyChartView = findViewById(R.id.chart_view);
-        Pie pie = AnyChart.pie();
+
+        //TODO add chart to view
+        //AnyChartView anyChartView = findViewById(R.id.chart_view);
+        //Pie pie = AnyChart.pie();
 
         Realm realm;
         realm = Realm.getDefaultInstance();

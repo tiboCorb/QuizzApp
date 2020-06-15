@@ -1,4 +1,4 @@
-package com.example.quizzapp;
+package com.example.quizzapp.activity;
 
 
 import android.Manifest;
@@ -11,7 +11,6 @@ import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -25,6 +24,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.example.quizzapp.BuildConfig;
+import com.example.quizzapp.R;
 import com.example.quizzapp.helper.InputValidation;
 import com.example.quizzapp.model.QuizzUser;
 import com.google.android.material.textfield.TextInputEditText;
@@ -63,14 +64,11 @@ public class CreateUserActivity extends Activity implements View.OnClickListener
     private Button buttonRegister;
 
     private InputValidation inputValidation;
-    private ProgressDialog pDialog;
     private CircleImageView profileImageView;
     private static final int REQUEST_TAKE_PHOTO = 0;
     private static final int REQUEST_PICK_PHOTO = 2;
-    private Uri mMediaUri;
     private static final int CAMERA_PIC_REQUEST = 1111;
 
-    private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
 
     public static final int MEDIA_TYPE_IMAGE = 1;
     private Uri fileUri;
@@ -91,18 +89,20 @@ public class CreateUserActivity extends Activity implements View.OnClickListener
 
 
     /**
-     * This method is to initialize views
+     * initialisation de la vue
      */
     private void initViews() {
         textInputLayout = findViewById(R.id.textInputLayoutName);
         textInputEditTextName = findViewById(R.id.textInputEditTextName);
         profileImageView = findViewById(R.id.profileImageView);
         buttonRegister = findViewById(R.id.buttonRegister);
+        buttonRegister.setEnabled(true);
+
 
     }
 
     /**
-     * This method is to initialize listeners
+     * initialisation des listeners
      */
     private void initListeners() {
         buttonRegister.setOnClickListener(this);
@@ -126,14 +126,14 @@ public class CreateUserActivity extends Activity implements View.OnClickListener
     }
 
     /**
-     * This method is to initialize objects to be used
+     * init du formulaire
      */
     private void initObjects() {
         inputValidation = new InputValidation(activity);
     }
 
     /**
-     * This implemented method is to listen the click on view
+     * ajoute un listener générale a la page
      *
      * @param v
      */

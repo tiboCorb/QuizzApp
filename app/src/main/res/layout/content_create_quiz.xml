@@ -61,7 +61,7 @@
                 android:layout_height="150dp"
                 android:id="@+id/questionView"
                 android:layout_marginBottom="30sp"
-                android:hint="Type your question here" />
+                android:hint="Ecris ta question ici" />
 
             <LinearLayout
                 android:layout_width="fill_parent"

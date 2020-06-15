@@ -1,4 +1,4 @@
-package com.example.quizzapp;
+package com.example.quizzapp.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.example.quizzapp.service.InitDataBase;
+import com.example.quizzapp.R;
 import com.example.quizzapp.model.QuizzUser;
 
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ import io.realm.RealmResults;
  */
 public class Splash extends Activity {
 
+
+    /** Durée totale de l'affichage du splashScreen */
     private static  int SPLASH_TIMEOUT = 3000;
 
 
@@ -29,26 +33,28 @@ public class Splash extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
-
-        //view actions
         Animation bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce_animation);
         ImageView  ImageToBounce =  findViewById(R.id.imageView);
+
+        // lancement de l'animation
         ImageToBounce.startAnimation(bounceAnimation);
 
-        // get all recorded user
+        // On récupère la liste des utilisteurs enregistrées
         final ArrayList<QuizzUser> quizzUsers =  this.getUserList();
 
-        // activity transition
+        /**
+         * une fois le delais écoulé execute le code ci-dessous
+         * */
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
+                // Si ce n'est pas la permière connection on récupère l'utilisteur et on le transmet a l'activité principale
                 if(quizzUsers != null && quizzUsers.size() > 0){
                     Intent i = new Intent(Splash.this, MainActivity.class);
                     i.putExtra("quizzUsersName",  quizzUsers.get(0).getNickname());
                     startActivity(i);
                     finish();
-
+                // sinon on initialise la base de données et on créé un nouvelle utilisateur
                 }else{
                     startService(new Intent(Splash.this, InitDataBase.class));
                     Intent i = new Intent(Splash.this, CreateUserActivity.class);
@@ -62,7 +68,9 @@ public class Splash extends Activity {
 
     }
 
-
+    /**
+     * fonction qui renvoie la liste des utilisateurs
+     */
     public ArrayList<QuizzUser> getUserList() {
         ArrayList<QuizzUser> list = new ArrayList<>();
         Realm realm;
